@@ -14,13 +14,18 @@ h2 {
   text-align: center;
 }
 
-div {
+#container {
   background: #cccccc;
   text-align: center;
   width: 960px;
   height: 300px;
   border: 10px black double;
   overflow: auto;
+}
+
+#chart-container {
+  width: 960px;
+  overflow: scroll;
 }
 
 img {
@@ -39,13 +44,12 @@ img:last-child {
   margin-right: 75px;
 }
 
-ul {
-  margin: 0px auto;
-  width: 100px;
-}
-
 li {
   font-size: 20px;
   text-align: left;
   list-style: none;
+}
+
+canvas {
+  width:960px;
 }

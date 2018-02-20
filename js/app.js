@@ -100,6 +100,7 @@ function displayImages() {
   Picture.currentSet = [];
 }
 
+/*
 function displayResults() {
   var liEl;
   imgOne.remove();
@@ -114,6 +115,7 @@ function displayResults() {
     divEl.appendChild(liEl);
   }
 }
+*/
 
 function clickHandler(e) {
   //Checks if user has selections left (25 total)
@@ -128,9 +130,116 @@ function clickHandler(e) {
   //Else: removes event listener and displays results
   } else {
     divEl.removeEventListener('click', clickHandler);
-    displayResults();
+    drawChart();
+    //displayResults();
   }  
 }
 divEl.addEventListener('click', clickHandler);
 displayImages();
 
+//Stores how often each product has been clicked on in an array
+var allClicks = [];
+//Stores name of each product in an array
+var allNames = [];
+//Update allClicks & allName arrays to current values
+function updateChartArrays() {
+  for(var i = 0; i < Picture.allPics.length; i++) {
+    allClicks[i] = Picture.allPics[i].clicks;
+    allNames[i] = Picture.allPics[i].name;
+  }
+}
+
+//Sets up data variable in global scope
+var data = {
+  labels: allNames,
+
+  datasets: [{
+    data: allClicks,
+    backgroundColor: [
+      'rgba(223, 46, 46, .5)',
+      'rgba(233, 127, 51, .5)',
+      'rgba(229, 226, 60, .5)',
+      'rgba(202, 239, 15, .5)',
+      'rgba(106, 218, 62, .5)',
+      'rgba(6, 177, 40, .5)',
+      'rgba(36, 243, 185, .5)',
+      'rgba(99, 198, 206, .5)',
+      'rgba(101, 184, 240, .5)',
+      'rgba(54, 96, 236, .5)',
+      'rgba(5, 41, 163, .5)',
+      'rgba(125, 26, 217, .5)',
+      'rgba(186, 53, 227, .5)',
+      'rgba(199, 24, 182, .5)',
+      'rgba(152, 20, 84, .5)',
+      'rgba(217, 42, 74, .5)',
+      'rgba(241, 48, 48, .5)',
+      'rgba(233, 127, 51, .5)',
+      'rgba(229, 226, 60, .5)',
+      'rgba(202, 239, 15, .5)'
+    ],
+    hoverBackgroundColor: [
+      'rgb(223, 46, 46)',
+      'rgb(233, 127, 51)',
+      'rgb(229, 226, 60)',
+      'rgb(202, 239, 15)',
+      'rgb(106, 218, 62)',
+      'rgb(6, 177, 40)',
+      'rgb(36, 243, 185)',
+      'rgb(99, 198, 206)',
+      'rgb(101, 184, 240)',
+      'rgb(54, 96, 236)',
+      'rgb(5, 41, 163)',
+      'rgb(125, 26, 217)',
+      'rgb(186, 53, 227)',
+      'rgb(199, 24, 182)',
+      'rgb(152, 20, 84)',
+      'rgb(217, 42, 74)',
+      'rgb(241, 48, 48)',
+      'rgb(233, 127, 51)',
+      'rgb(229, 226, 60)',
+      'rgb(202, 239, 15)'
+    ],
+    borderColor: [
+    ],
+    borderWidth: [
+    ]
+  }]
+};
+
+function drawChart() {
+  //Get the bar chart canvas
+  var ctx = document.getElementById('chart').getContext('2d');
+
+  //Updates allClicks & allNames arrays
+  updateChartArrays();
+  
+  //Create chart object
+  var chart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: {
+        easing: 'linear',
+        duration: 1500,
+      },
+      title: {
+        display: true,
+        fontSize: 20,
+        fontColor: '#000000',
+        text: 'Most Popular BusMall Products',
+      },
+      legend: {
+        display: false,
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
+}
