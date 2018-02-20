@@ -48,7 +48,11 @@ new Picture('Wine-glass', 'img/wine-glass.jpg', 19);
 function isDupe(picture) {
   //Checks if this is the first set being created
   if(!Picture.lastSet[0] && !Picture.lastSet[1] && !Picture.lastSet[2]) {
-    return false;
+    if(picture === Picture.currentSet[0] || picture === Picture.currentSet[1] ||picture === Picture.currentSet[2]) {
+      return true;
+    } else {
+      return false;
+    }
   }
   else if (picture === Picture.lastSet[0]) { return true; }
   else if (picture === Picture.lastSet[1]) { return true; }

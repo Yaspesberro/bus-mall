@@ -46,7 +46,7 @@ ul {
 
 li {
   font-size: 20px;
-  font-weight: bold;
+  /*font-weight: bold;*/
   text-align: left;
   list-style: none;
 }
