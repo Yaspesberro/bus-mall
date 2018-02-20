@@ -130,6 +130,7 @@ function clickHandler(e) {
   //Else: removes event listener and displays results
   } else {
     divEl.removeEventListener('click', clickHandler);
+    window.scrollTo(0,document.body.scrollHeight);
     drawChart();
     //displayResults();
   }  
@@ -209,10 +210,8 @@ var data = {
 function drawChart() {
   //Get the bar chart canvas
   var ctx = document.getElementById('chart').getContext('2d');
-
   //Updates allClicks & allNames arrays
   updateChartArrays();
-  
   //Create chart object
   var chart = new Chart(ctx, {
     type: 'bar',
