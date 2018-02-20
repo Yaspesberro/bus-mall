@@ -2,17 +2,23 @@
   margin: 0px auto;
 }
 
+h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+}
+
 div {
+  background: #d6d6d6;
   text-align: center;
   width: 960px;
   height: 300px;
-  border: 2px orange solid;
+  border: 4px black double;
 }
 
 img {
+  border: 3px #424242 ridge;
   margin-top: 75px;
   height: 150px;
-  border: 2px blue solid;
 }
 
 img:first-child {
@@ -23,4 +29,8 @@ img:first-child {
 img:last-child {
   float: right;
   margin-right: 75px;
+}
+
+li {
+  list-style: none;
 }
