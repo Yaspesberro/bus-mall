@@ -101,7 +101,6 @@ function displayImages() {
 }
 
 function displayResults() {
-  var ulEl = document.createElement('ul');
   var liEl;
   imgOne.remove();
   imgTwo.remove();
@@ -118,9 +117,9 @@ function displayResults() {
 
 function clickHandler(e) {
   //Checks if user has selections left (25 total)
-  if(totalClicks < 25) {
+  if(totalClicks < 24) {
     //Checks if the user clicked on one of the pictures
-    if(e.target != divEl) {
+    if(e.target !== divEl) {
       Picture.allPics[e.target.alt].clicks += 1;
       totalClicks++;
       console.log(e.target.alt);
@@ -134,3 +133,4 @@ function clickHandler(e) {
 }
 divEl.addEventListener('click', clickHandler);
 displayImages();
+
