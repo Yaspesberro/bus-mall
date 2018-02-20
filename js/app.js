@@ -12,7 +12,7 @@ Picture.currentSet = [];
 //Stores the previous set of three images
 Picture.lastSet = [];
 
-//Constructor creates picture object
+//Constructor for Picture object
 function Picture(name, filePath, index) {
   this.name = name;
   this.filePath = filePath;
@@ -50,9 +50,7 @@ function isDupe(picture) {
   if(!Picture.lastSet[0] && !Picture.lastSet[1] && !Picture.lastSet[2]) {
     if(picture === Picture.currentSet[0] || picture === Picture.currentSet[1] ||picture === Picture.currentSet[2]) {
       return true;
-    } else {
-      return false;
-    }
+    } else { return false; }
   }
   else if (picture === Picture.lastSet[0]) { return true; }
   else if (picture === Picture.lastSet[1]) { return true; }
@@ -80,7 +78,7 @@ function random() {
   }
 }
 
-//Displays pictures by assigning them to <img> elements
+//Displays pictures by assigning them to <img> elements, calls random()
 function displayImages() {
   random();
   //Adds first currentSet element to the <img> element
@@ -95,11 +93,7 @@ function displayImages() {
   imgThree.src = Picture.currentSet[2].filePath;
   imgThree.alt = Picture.currentSet[2].index;
   imgThree.title = Picture.currentSet[2].name;
-
   //Transferes currentSet -> lastSet, then clears the currentSet array
-  /*
-  
-  */
   Picture.lastSet[0] = Picture.currentSet[0];
   Picture.lastSet[1] = Picture.currentSet[1];
   Picture.lastSet[2] = Picture.currentSet[2];
@@ -107,12 +101,11 @@ function displayImages() {
 }
 
 function displayResults() {
-  //divEl.innerHTML = '';
+  var ulEl = document.createElement('ul');
+  var liEl;
   imgOne.remove();
   imgTwo.remove();
   imgThree.remove();
-  var ulEl = document.createElement('ul');
-  var liEl;
 
   for(var i = 0; i < Picture.allPics.length; i++) {
     var name = Picture.allPics[i].name;
@@ -124,20 +117,20 @@ function displayResults() {
 }
 
 function clickHandler(e) {
+  //Checks if user has selections left (25 total)
   if(totalClicks < 25) {
-    //Stores which <img> element got clicked within the container
-  
+    //Checks if the user clicked on one of the pictures
     if(e.target != divEl) {
       Picture.allPics[e.target.alt].clicks += 1;
       totalClicks++;
       console.log(e.target.alt);
       displayImages();
     }
+  //Else: removes event listener and displays results
   } else {
     divEl.removeEventListener('click', clickHandler);
     displayResults();
   }  
 }
-
 divEl.addEventListener('click', clickHandler);
 displayImages();
