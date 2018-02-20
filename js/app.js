@@ -49,21 +49,14 @@ function isDupe(picture) {
   //Checks if this is the first set being created
   if(!Picture.lastSet[0] && !Picture.lastSet[1] && !Picture.lastSet[2]) {
     return false;
-  } else if (picture === Picture.lastSet[0]) {
-    return true;
-  } else if (picture === Picture.lastSet[1]) {
-    return true;
-  } else if (picture === Picture.lastSet[2]) {
-    return true;
-  } else if (picture === Picture.currentSet[0]) {
-    return true;
-  } else if (picture === Picture.currentSet[1]) {
-    return true;
-  } else if (picture === Picture.currentSet[2]) {
-    return true;
-  } else {
-    return false;
   }
+  else if (picture === Picture.lastSet[0]) { return true; }
+  else if (picture === Picture.lastSet[1]) { return true; }
+  else if (picture === Picture.lastSet[2]) { return true; }
+  else if (picture === Picture.currentSet[0]) { return true; }
+  else if (picture === Picture.currentSet[1]) { return true; }
+  else if (picture === Picture.currentSet[2]) { return true; }
+  else { return false; }
 }
 
 //Puts three random pictures in currentSet array if they're not dupes
@@ -98,14 +91,22 @@ function displayImages() {
   imgThree.src = Picture.currentSet[2].filePath;
   imgThree.alt = Picture.currentSet[2].index;
   imgThree.title = Picture.currentSet[2].name;
+
   //Transferes currentSet -> lastSet, then clears the currentSet array
   /*
   
   */
+  Picture.lastSet[0] = Picture.currentSet[0];
+  Picture.lastSet[1] = Picture.currentSet[1];
+  Picture.lastSet[2] = Picture.currentSet[2];
+  Picture.currentSet = [];
 }
 
 function displayResults() {
-  divEl.innerHTML = '';
+  //divEl.innerHTML = '';
+  imgOne.remove();
+  imgTwo.remove();
+  imgThree.remove();
   var ulEl = document.createElement('ul');
   var liEl;
 
@@ -119,7 +120,6 @@ function displayResults() {
 }
 
 function clickHandler(e) {
-
   if(totalClicks < 25) {
     //Stores which <img> element got clicked within the container
   
@@ -128,13 +128,9 @@ function clickHandler(e) {
       totalClicks++;
       console.log(e.target.alt);
       displayImages();
-      Picture.lastSet[0] = Picture.currentSet[0];
-      Picture.lastSet[1] = Picture.currentSet[1];
-      Picture.lastSet[2] = Picture.currentSet[2];
-      Picture.currentSet = [];
     }
   } else {
-    //divEl.removeEventListener();
+    divEl.removeEventListener('click', clickHandler);
     displayResults();
   }  
 }

@@ -1,19 +1,26 @@
 * {
   margin: 0px auto;
   font-family: 'Alegreya SC';
+  background: #f1f0f0;
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 65px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 25px;
   text-align: center;
 }
 
 div {
-  background: #d6d6d6;
+  background: #cccccc;
   text-align: center;
   width: 960px;
   height: 300px;
-  border: 4px black double;
+  border: 10px black double;
+  overflow: auto;
 }
 
 img {
@@ -30,6 +37,11 @@ img:first-child {
 img:last-child {
   float: right;
   margin-right: 75px;
+}
+
+ul {
+  margin: 0px auto;
+  width: 100px;
 }
 
 li {
