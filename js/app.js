@@ -18,12 +18,12 @@ function Picture(name, filePath) {
   this.filePath = filePath;
   this.clicks = 0;
   this.views = 0;
-  this.id = '';
+  this.id = name.toLowerCase();
   Picture.allPics.push(this);
 }
 
 //Instantiate all 20 pictures
-new Picture('Bag', 'img/bag.jpg');
+var bag = new Picture('Bag', 'img/bag.jpg');
 new Picture('Banana', 'img/banana.jpg');
 new Picture('Bathroom', 'img/bathroom.jpg');
 new Picture('Boots', 'img/boots.jpg');
@@ -55,16 +55,51 @@ function isDupe(picture) {
     return true;
   } else if (picture === Picture.lastSet[2]) {
     return true;
+  } else if (picture === Picture.currentSet[0]) {
+    return true;
+  } else if (picture === Picture.currentSet[1]) {
+    return true;
+  } else if (picture === Picture.currentSet[2]) {
+    return true;
+  } else {
+    return false;
   }
 }
 
-//Puts three random pictures in currentSet array, making sure there are no dupes!
+//Puts three random pictures in currentSet array if they're not dupes
 function random() {
-//Add event listeners?
+  for(var i = 0; i < 3; i++) {
+    var randomPic = Math.floor(Math.random() * Picture.allPics.length);
+
+    if(isDupe(Picture.allPics[randomPic])) {
+      i -= 1;
+      continue;
+    } else {
+      Picture.currentSet.push(Picture.allPics[randomPic]);
+    }
+  }
+  displayImages();
 }
 
+//Displays pictures by assigning them to <img> elements
 function displayImages() {
-//last one? remove event handler
+  //Adds first currentSet element to the <img> element
+  imgOne.src = Picture.currentSet[0].filePath;
+  imgOne.alt = Picture.currentSet[0].name;
+  imgOne.title = Picture.currentSet[0].name;
+  //Adds second currentSet element to the <img> element  
+  imgTwo.src = Picture.currentSet[1].filePath;
+  imgTwo.alt = Picture.currentSet[1].name;
+  imgTwo.title = Picture.currentSet[1].name;
+  //Adds third currentSet element to the <img> element
+  imgThree.src = Picture.currentSet[2].filePath;
+  imgThree.alt = Picture.currentSet[2].name;
+  imgThree.title = Picture.currentSet[2].name;
+  //Transferes currentSet -> lastSet, then clears the currentSet array
+  Picture.lastSet[0] = Picture.currentSet[0];
+  Picture.lastSet[1] = Picture.currentSet[1];
+  Picture.lastSet[2] = Picture.currentSet[2];
+  Picture.currentSet = [];
 }
 
 function displayResults() {
