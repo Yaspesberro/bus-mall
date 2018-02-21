@@ -93,26 +93,9 @@ function displayImages() {
   Picture.currentSet = [];
 }
 
-/*
-function displayResults() {
-  var liEl;
-  imgOne.remove();
-  imgTwo.remove();
-  imgThree.remove();
-
-  for(var i = 0; i < Picture.allPics.length; i++) {
-    var name = Picture.allPics[i].name;
-    var clicks = Picture.allPics[i].clicks;
-    liEl = document.createElement('li');
-    liEl.textContent = name + ': clicks = ' + clicks;
-    divEl.appendChild(liEl);
-  }
-}
-*/
-
 function clickHandler(e) {
   //Checks if user has selections left (25 total)
-  if(totalClicks < 25) {
+  if(totalClicks < 24) {
     //Checks if the user clicked on one of the pictures
     if(e.target !== divEl) {
       Picture.allPics[e.target.alt].clicks += 1;
@@ -125,15 +108,14 @@ function clickHandler(e) {
     divEl.removeEventListener('click', clickHandler);
     window.scrollTo(0,document.body.scrollHeight);
     drawChart();
-    //displayResults();
   }
 }
 divEl.addEventListener('click', clickHandler);
 displayImages();
 
-//Stores how often each product has been clicked on in an array
+//Stores clicks from each Picture.allPics objects into an array
 var allClicks = [];
-//Stores name of each product in an array
+//Stores name of each product in Picture.allPics into an array
 var allNames = [];
 //Update allClicks & allName arrays to current values
 function updateChartArrays() {
