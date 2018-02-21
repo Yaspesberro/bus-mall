@@ -1,0 +1,53 @@
+* {
+  margin: 0px auto;
+  font-family: 'Alegreya SC';
+  background: #f1f0f0;
+}
+
+h1 {
+  font-size: 65px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 25px;
+  text-align: center;
+}
+
+#container {
+  background: #c2c2c2;
+  text-align: center;
+  width: 960px;
+  height: 300px;
+  border: 12px #707070 ridge;
+}
+
+#chart-container {
+  width: 960px;
+}
+
+img {
+  border: 3px #424242 solid;
+  margin-top: 75px;
+  height: 150px;
+}
+
+img:first-child {
+  float: left;
+  margin-left: 75px;
+}
+
+img:last-child {
+  float: right;
+  margin-right: 75px;
+}
+
+li {
+  font-size: 20px;
+  text-align: left;
+  list-style: none;
+}
+
+canvas {
+  width:960px;
+}

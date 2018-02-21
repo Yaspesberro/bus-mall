@@ -4,7 +4,7 @@ var divEl = document.getElementById('container');
 var imgOne = document.getElementById('one');
 var imgTwo = document.getElementById('two');
 var imgThree = document.getElementById('three');
-var totalClicks = 0;
+var totalClicksLeft = 25;
 //Stores all picture objects
 Picture.allPics = [];
 //Stores the current set of three images
@@ -95,11 +95,11 @@ function displayImages() {
 
 function clickHandler(e) {
   //Checks if user has selections left (25 total)
-  if(totalClicks < 24) {
+  if(totalClicksLeft > 0) {
     //Checks if the user clicked on one of the pictures
     if(e.target !== divEl) {
       Picture.allPics[e.target.alt].clicks += 1;
-      totalClicks++;
+      totalClicksLeft--;
       console.log(e.target.alt);
       displayImages();
     }
