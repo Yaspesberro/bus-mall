@@ -51,14 +51,9 @@ function isDupe(picture) {
     if(picture === Picture.currentSet[0] || picture === Picture.currentSet[1] ||picture === Picture.currentSet[2]) {
       return true;
     } else { return false; }
-  }
-  else if (picture === Picture.lastSet[0]) { return true; }
-  else if (picture === Picture.lastSet[1]) { return true; }
-  else if (picture === Picture.lastSet[2]) { return true; }
-  else if (picture === Picture.currentSet[0]) { return true; }
-  else if (picture === Picture.currentSet[1]) { return true; }
-  else if (picture === Picture.currentSet[2]) { return true; }
-  else { return false; }
+  } else if (picture === Picture.lastSet[0] || picture === Picture.lastSet[1] || picture === Picture.lastSet[2] || picture === Picture.currentSet[0] || picture === Picture.currentSet[1] || picture === Picture.currentSet[2]) {
+    return true; 
+  } else { return false; }
 }
 
 //Puts three random pictures in currentSet array if they're not dupes
