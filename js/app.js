@@ -4,8 +4,7 @@ var divEl = document.getElementById('container');
 var imgOne = document.getElementById('one');
 var imgTwo = document.getElementById('two');
 var imgThree = document.getElementById('three');
-var totalClicks = 24;
-//var totalClicks = 0;
+var totalClicks = 0;
 //Stores all picture objects
 Picture.allPics = [];
 //Stores the current set of three images
@@ -221,7 +220,7 @@ function drawChart() {
       },
       tooltips: {
         titleFontFamily: 'Alegreya SC',
-        titleFontSize: 22,
+        titleFontSize: 18,
         footerFontSize: 15,
       },
       title: {

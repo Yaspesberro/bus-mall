@@ -15,11 +15,12 @@ h2 {
 }
 
 #container {
-  background: #cccccc;
+  background: #c2c2c2;
   text-align: center;
   width: 960px;
   height: 300px;
-  border: 10px black double;
+  /*border: 10px black double;*/
+  border: 12px #707070 ridge;
 }
 
 #chart-container {
@@ -27,7 +28,7 @@ h2 {
 }
 
 img {
-  border: 3px #424242 ridge;
+  border: 3px #424242 solid;
   margin-top: 75px;
   height: 150px;
 }
