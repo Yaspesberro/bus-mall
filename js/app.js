@@ -13,36 +13,36 @@ Picture.currentSet = [];
 Picture.lastSet = [];
 
 //Constructor for Picture object
-function Picture(name, filePath, index) {
+function Picture(name, filePath) {
   this.name = name;
   this.filePath = filePath;
-  this.index = index;
+  this.index = Picture.allPics.length;
   this.clicks = 0;
   this.views = 0;
   Picture.allPics.push(this);
 }
 
 //Instantiate all 20 pictures
-new Picture('Bag', 'img/bag.jpg', 0);
-new Picture('Banana', 'img/banana.jpg', 1);
-new Picture('Bathroom', 'img/bathroom.jpg', 2);
-new Picture('Boots', 'img/boots.jpg', 3);
-new Picture('Breakfast', 'img/breakfast.jpg', 4);
-new Picture('Bubblegum', 'img/bubblegum.jpg', 5);
-new Picture('Chair', 'img/chair.jpg', 6);
-new Picture('Cthulhu', 'img/cthulhu.jpg', 7);
-new Picture('Dog-duck', 'img/dog-duck.jpg', 8);
-new Picture('Dragon', 'img/dragon.jpg', 9);
-new Picture('Pen', 'img/pen.jpg', 10);
-new Picture('Pet-sweep', 'img/pet-sweep.jpg', 11);
-new Picture('Scissors', 'img/scissors.jpg', 12);
-new Picture('Shark', 'img/shark.jpg', 13);
-new Picture('Sweep', 'img/sweep.png', 14);
-new Picture('Tauntaun', 'img/tauntaun.jpg', 15);
-new Picture('Unicorn', 'img/unicorn.jpg', 16);
-new Picture('Usb', 'img/usb.gif', 17);
-new Picture('Water-can', 'img/water-can.jpg', 18);
-new Picture('Wine-glass', 'img/wine-glass.jpg', 19);
+new Picture('Bag', 'img/bag.jpg');
+new Picture('Banana', 'img/banana.jpg');
+new Picture('Bathroom', 'img/bathroom.jpg');
+new Picture('Boots', 'img/boots.jpg');
+new Picture('Breakfast', 'img/breakfast.jpg');
+new Picture('Bubblegum', 'img/bubblegum.jpg');
+new Picture('Chair', 'img/chair.jpg');
+new Picture('Cthulhu', 'img/cthulhu.jpg');
+new Picture('Dog-duck', 'img/dog-duck.jpg');
+new Picture('Dragon', 'img/dragon.jpg');
+new Picture('Pen', 'img/pen.jpg');
+new Picture('Pet-sweep', 'img/pet-sweep.jpg');
+new Picture('Scissors', 'img/scissors.jpg');
+new Picture('Shark', 'img/shark.jpg');
+new Picture('Sweep', 'img/sweep.png');
+new Picture('Tauntaun', 'img/tauntaun.jpg');
+new Picture('Unicorn', 'img/unicorn.jpg');
+new Picture('Usb', 'img/usb.gif');
+new Picture('Water-can', 'img/water-can.jpg');
+new Picture('Wine-glass', 'img/wine-glass.jpg');
 
 //Checks & returns true if picture was used in the last set of images
 function isDupe(picture) {
