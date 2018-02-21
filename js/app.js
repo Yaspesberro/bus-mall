@@ -84,7 +84,7 @@ function displayImages() {
   imgOne.src = Picture.currentSet[0].filePath;
   imgOne.alt = Picture.currentSet[0].index;
   imgOne.title = Picture.currentSet[0].name;
-  //Adds second currentSet element to the <img> element  
+  //Adds second currentSet element to the <img> element
   imgTwo.src = Picture.currentSet[1].filePath;
   imgTwo.alt = Picture.currentSet[1].index;
   imgTwo.title = Picture.currentSet[1].name;
@@ -132,7 +132,7 @@ function clickHandler(e) {
     window.scrollTo(0,document.body.scrollHeight);
     drawChart();
     //displayResults();
-  }  
+  }
 }
 divEl.addEventListener('click', clickHandler);
 displayImages();
@@ -198,7 +198,7 @@ var data = {
       'rgb(229, 226, 60)',
       'rgb(202, 239, 15)'
     ],
-    borderColor: [], 
+    borderColor: [],
     borderWidth: []
   }]
 };
