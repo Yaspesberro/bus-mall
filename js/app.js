@@ -4,7 +4,8 @@ var divEl = document.getElementById('container');
 var imgOne = document.getElementById('one');
 var imgTwo = document.getElementById('two');
 var imgThree = document.getElementById('three');
-var totalClicks = 0;
+var totalClicks = 24;
+//var totalClicks = 0;
 //Stores all picture objects
 Picture.allPics = [];
 //Stores the current set of three images
@@ -65,8 +66,6 @@ function isDupe(picture) {
 function random() {
   for(var i = 0; i < 3; i++) {
     var randomPic = Math.floor(Math.random() * Picture.allPics.length);
-    var newSet = [];
-
     if(isDupe(Picture.allPics[randomPic])) {
       i -= 1;
       continue;
@@ -119,7 +118,7 @@ function displayResults() {
 
 function clickHandler(e) {
   //Checks if user has selections left (25 total)
-  if(totalClicks < 24) {
+  if(totalClicks < 25) {
     //Checks if the user clicked on one of the pictures
     if(e.target !== divEl) {
       Picture.allPics[e.target.alt].clicks += 1;
@@ -153,7 +152,6 @@ function updateChartArrays() {
 //Sets up data variable in global scope
 var data = {
   labels: allNames,
-
   datasets: [{
     data: allClicks,
     backgroundColor: [
@@ -200,10 +198,8 @@ var data = {
       'rgb(229, 226, 60)',
       'rgb(202, 239, 15)'
     ],
-    borderColor: [
-    ],
-    borderWidth: [
-    ]
+    borderColor: [], 
+    borderWidth: []
   }]
 };
 
@@ -221,11 +217,17 @@ function drawChart() {
       maintainAspectRatio: false,
       animation: {
         easing: 'linear',
-        duration: 1500,
+        duration: 850,
+      },
+      tooltips: {
+        titleFontFamily: 'Alegreya SC',
+        titleFontSize: 22,
+        footerFontSize: 15,
       },
       title: {
+        fontFamily: 'Alegreya SC',
         display: true,
-        fontSize: 20,
+        fontSize: 30,
         fontColor: '#000000',
         text: 'Most Popular BusMall Products',
       },
