@@ -5,6 +5,10 @@ var imgOne = document.getElementById('one');
 var imgTwo = document.getElementById('two');
 var imgThree = document.getElementById('three');
 var totalClicksLeft = 25;
+//Stores clicks from each Picture.allPics objects into an array
+var allClicks = [];
+//Stores name of each product in Picture.allPics into an array
+var allNames = [];
 //Stores all picture objects
 Picture.allPics = [];
 //Stores the current set of three images
@@ -99,24 +103,18 @@ function clickHandler(e) {
     //Checks if the user clicked on one of the pictures
     if(e.target !== divEl) {
       Picture.allPics[e.target.alt].clicks += 1;
-      totalClicksLeft--;
-      console.log(e.target.alt);
-      displayImages();
+      totalClicksLeft -= 1;
+      if(totalClicksLeft === 0) {
+        divEl.removeEventListener('click', clickHandler);
+        window.scrollTo(0,document.body.scrollHeight);
+        drawChart();
+      } else { displayImages(); }
     }
-  //Else: removes event listener and displays results
-  } else {
-    divEl.removeEventListener('click', clickHandler);
-    window.scrollTo(0,document.body.scrollHeight);
-    drawChart();
-  }
+  } 
 }
 divEl.addEventListener('click', clickHandler);
 displayImages();
 
-//Stores clicks from each Picture.allPics objects into an array
-var allClicks = [];
-//Stores name of each product in Picture.allPics into an array
-var allNames = [];
 //Update allClicks & allName arrays to current values
 function updateChartArrays() {
   for(var i = 0; i < Picture.allPics.length; i++) {
