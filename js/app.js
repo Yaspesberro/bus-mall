@@ -4,11 +4,11 @@ var divEl = document.getElementById('container');
 var imgOne = document.getElementById('one');
 var imgTwo = document.getElementById('two');
 var imgThree = document.getElementById('three');
-var totalClicksLeft = 25;
-//Stores clicks from each Picture.allPics objects into an array
-var allClicks = [];
-//Stores name of each product in Picture.allPics into an array
 var allNames = [];
+var allViews = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var allClicks = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var totalClicksLeft = 25;
+
 //Stores all picture objects
 Picture.allPics = [];
 //Stores the current set of three images
@@ -26,7 +26,7 @@ function Picture(name, filePath) {
   Picture.allPics.push(this);
 }
 
-//Instantiate all 20 pictures
+//Instantiate all 20 picture objects
 new Picture('Bag', 'img/bag.jpg');
 new Picture('Banana', 'img/banana.jpg');
 new Picture('Bathroom', 'img/bathroom.jpg');
@@ -75,7 +75,7 @@ function random() {
   }
 }
 
-//Displays pictures by assigning them to <img> elements, calls random()
+//Displays pictures assigning them to <img> elements, calls random()
 function displayImages() {
   random();
   //Adds first currentSet element to the <img> element
@@ -109,17 +109,17 @@ function clickHandler(e) {
         window.scrollTo(0,document.body.scrollHeight);
         drawChart();
       } else { displayImages(); }
+      updateLocal();
     }
   } 
 }
-divEl.addEventListener('click', clickHandler);
-displayImages();
 
-//Update allClicks & allName arrays to current values
-function updateChartArrays() {
+//Update allClicks, allViews & allNames arrays to current values
+function updateTotals() {
   for(var i = 0; i < Picture.allPics.length; i++) {
-    allClicks[i] = Picture.allPics[i].clicks;
     allNames[i] = Picture.allPics[i].name;
+    allViews[i] = Picture.allPics[i].views;
+    allClicks[i] = Picture.allPics[i].clicks;
   }
 }
 
@@ -180,8 +180,7 @@ var data = {
 function drawChart() {
   //Get the bar chart canvas
   var ctx = document.getElementById('chart').getContext('2d');
-  //Updates allClicks & allNames arrays
-  updateChartArrays();
+  updateTotals();
   //Create chart object
   var chart = new Chart(ctx, {
     type: 'bar',
@@ -218,3 +217,20 @@ function drawChart() {
     }
   });
 }
+
+function updateLocal() {
+  localStorage.setItem('picture', JSON.stringify(Picture.allPics));
+}
+
+function startLocal() {
+  //If local storage is empty, then set key/value
+  if(localStorage.length === 0) {
+    localStorage.setItem('picture', JSON.stringify(Picture.allPics));
+  //else, assign stored Picture object in local storage to the current Picture.allPics
+  } else {
+    Picture.allPics = JSON.parse(localStorage.getItem('picture'));
+  }
+}
+startLocal();
+displayImages();
+divEl.addEventListener('click', clickHandler);
