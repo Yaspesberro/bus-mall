@@ -218,6 +218,7 @@ function drawChart() {
   });
 }
 
+//Updates the current Picture object to local storage
 function updateLocal() {
   localStorage.setItem('picture', JSON.stringify(Picture.allPics));
 }
