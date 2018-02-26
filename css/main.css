@@ -7,7 +7,7 @@
 h1 {
   background-color: #1ba7f8;
   color: yellow;
-  border-bottom: 2px black solid;
+  border-bottom: 2px #1493dd solid;
   font-size: 75px;
   text-align: center;
 }
@@ -22,7 +22,7 @@ h2 {
   text-align: center;
   width: 960px;
   height: 300px;
-  border: 15px #707070 ridge;
+  border: 15px #1493dd ridge;
 }
 
 #chart-container {
