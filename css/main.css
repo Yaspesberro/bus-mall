@@ -1,11 +1,14 @@
 * {
   margin: 0px auto;
   font-family: 'Alegreya SC';
-  background: #f1f0f0;
+  background-color: yellow;
 }
 
 h1 {
-  font-size: 65px;
+  background-color: #1ba7f8;
+  color: yellow;
+  border-bottom: 2px #1493dd solid;
+  font-size: 75px;
   text-align: center;
 }
 
@@ -15,11 +18,11 @@ h2 {
 }
 
 #container {
-  background: #c2c2c2;
+  background: linear-gradient(#1ba7f8, yellow, #1ba7f8);
   text-align: center;
   width: 960px;
   height: 300px;
-  border: 12px #707070 ridge;
+  border: 15px #1493dd ridge;
 }
 
 #chart-container {
@@ -27,7 +30,7 @@ h2 {
 }
 
 img {
-  border: 3px #424242 solid;
+  border: 5px #424242 outset;
   margin-top: 75px;
   height: 150px;
 }
